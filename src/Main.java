@@ -19,14 +19,13 @@ public class Main {
                 userArray[count] = new UserService().createUser(uname, password1, name);
                 count++;
         }
-//                for(User users : userArray){
-//                    System.out.println(users);
-//                }
+//
             }
 
         int count2 = 5;
         String username = "";
         String password = "";
+        Boolean loginPass = false;
 
         while(count2 > 0) {
             Scanner scanner = new Scanner(System.in);
@@ -39,19 +38,24 @@ public class Main {
 
                 String username2 = users.getUsername();
                 String password2 = users.getPassword();
-                System.out.println(users.getName());
+
 
                 if (username.equals(username2) || password.equals(password2)) {
                     System.out.println("\u001B[34m" + "Log in Successful. " + "\u001B[33m\" + Username : " + "\u001B[32m" + username + "\u001B[33m" + " and password: " +
                             "\u001B[32m" + password + "\u001B[33m" + " match.");
+                    loginPass = true;
                     System.exit(0);
-                } else {
-                    System.out.println("\u001B[31m" + "Login Failed");
                 }
+
+
+
+            }
+            if(!loginPass){
+                System.out.println("\u001B[31m" + "Login Failed");
             }
             count2--;
         }
-        System.out.println("\u001B[31m" + "login failed.");
+        System.out.println("\u001B[31m" + "Too many failed login attempts, you are now locked out." );
         }
     }
 
